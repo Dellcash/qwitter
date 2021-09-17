@@ -64,7 +64,7 @@
       <q-input
         dense
         class="q-ma-md nabi"
-        placeholder="جستجوگر کیوتر"
+        placeholder="جستجوگر ویکو"
         rounded
         outlined
       >
@@ -78,7 +78,7 @@
           <q-item-section>
             <q-item-label overline class="text-gray">تحصیلات</q-item-label>
             <q-item-label class="text-weight-bold"
-              >اتفاق شگفت‌انگیزی درحال رخ دادنه!!</q-item-label
+              >اتفاق شگفت‌انگیزی درحال رخ دادن است!!</q-item-label
             >
             <q-item-label caption
               >مجلس آموزش زبان برنامه‌نویسی را در تمامی مقاطع تحصیلی اجباری کرد
