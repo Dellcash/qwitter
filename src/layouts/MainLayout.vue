@@ -4,11 +4,21 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title class="bank flip-horizontal col-2">
+        <!-- another toolbar-title -->
+        <!-- <q-toolbar-title class="bank flip-horizontal col-md-2 col-xs-6">
+          <span class="text-h5 text-weight-bold gt-sm">کیو</span
+          ><span class="shadow-24 bg-black text-white q-pl-sm gt-sm">تر</span>
+          <q-icon
+            class="flip-horizontal lt-md"
+            name="fas fa-kiwi-bird"
+            size="lg"
+          />
+        </q-toolbar-title> -->
+        
+        <q-toolbar-title class="bank flip-horizontal col-2 ">
           <span class="text-h5 text-weight-bold">کیو</span
           ><span class="shadow-24 bg-black text-white q-pl-sm">تر</span>
         </q-toolbar-title>
-
         <!-- <q-btn dense flat round icon="menu" @click="toggleRightDrawer" /> -->
       </q-toolbar>
     </q-header>
@@ -102,7 +112,10 @@
             <q-item-label class="text-weight-bold"
               >جنگ بین گوگل و <span class="mosa">ویکو</span></q-item-label
             >
-            <q-item-label caption>جنگ بین این دو شرکت زمانی آغاز شد که گوگل پیشنهاد خرید ویکو را به مدیرعاملش داد.</q-item-label>
+            <q-item-label caption
+              >جنگ بین این دو شرکت زمانی آغاز شد که گوگل پیشنهاد خرید ویکو را به
+              مدیرعاملش داد.</q-item-label
+            >
           </q-item-section>
 
           <q-item-section side top>
@@ -110,8 +123,6 @@
           </q-item-section>
         </q-item>
       </q-list>
-
-      
     </q-drawer>
 
     <q-page-container>
