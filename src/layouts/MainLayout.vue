@@ -15,9 +15,9 @@
           />
         </q-toolbar-title> -->
 
-        <q-toolbar-title class="bank flip-horizontal col-2 ">
+        <q-toolbar-title class="bank flip-horizontal col-2 q-px-none">
           <span class="text-h5 text-weight-bold">ویـ</span
-          ><span class="shadow-24 bg-black text-white q-pl-sm">کو</span>
+          ><span class="shadow-24 bg-black text-white q-pl-sm">کوو</span>
         </q-toolbar-title>
         <q-toolbar-title class="mosa q-mt-sm q-mr-md absolute-top-right">
           <span class="text-h6 q-uploader q-tab">{{ $route.name }}</span>
@@ -64,7 +64,7 @@
       <q-input
         dense
         class="q-ma-md nabi"
-        placeholder="جستجوگر ویکو"
+        placeholder="جستجوگر ویکوو"
         rounded
         outlined
       >
@@ -95,7 +95,7 @@
           <q-item-section>
             <q-item-label overline class="text-gray">تکنولوژی</q-item-label>
             <q-item-label class="text-weight-bold"
-              >ایلان ماسک در شرکت <span class="mosa">ویکو </span>سرمایه‌گذاری
+              >ایلان ماسک در شرکت <span class="mosa">ویکوو </span>سرمایه‌گذاری
               میکند.</q-item-label
             >
             <q-item-label caption
@@ -113,7 +113,7 @@
           <q-item-section>
             <q-item-label overline class="text-gray">سرشکنی</q-item-label>
             <q-item-label class="text-weight-bold"
-              >جنگ بین گوگل و <span class="mosa">ویکو</span></q-item-label
+              >جنگ بین گوگل و <span class="mosa">ویکوو</span></q-item-label
             >
             <q-item-label caption
               >جنگ بین این دو شرکت زمانی آغاز شد که گوگل پیشنهاد خرید ویکو را به

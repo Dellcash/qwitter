@@ -33,8 +33,8 @@
     </div>
     <q-separator size="10px" color="grey-1" class="divider" />
 
-    <q-list>
-      <q-item class="q-py-md">
+    <q-list separator>
+      <q-item class="q-py-md" v-for="whico in whicos" :key="whico.date">
         <q-item-section avatar top>
           <q-avatar size="xl">
             <img src="https://dellcash.netlify.app/img/profile.41e50306.jpeg" />
@@ -44,26 +44,27 @@
         <q-item-section>
           <q-item-label class="text-subtitle1">
             <strong>امید دلکش </strong>
-            <span class="text-grey-7"> dellcash@ -- چند‌دقیقه پیش</span>
+            <span class="text-grey-7">dellcash@</span>
+            <span class="text-grey-7 float-right mosa" dir="ltr">{{
+              format(new Date(), "yyyy/MM/dd")
+            }}</span>
           </q-item-label>
           <q-item-label class="text-body1">
-            نگران نباش که توو نتایج جستجو به پایین بری ، بر خلاف بسیاری از
-            موتورهای جستجوی دیگه، بسته به اون‌چیزی که دنبالش هستی، ممکنه بهترین
-            نتایج را در وسط لیست پیدا کنی.
+            {{ whico.content }}
             <br />
             <br />
-            نتایج جستجو جامع نیستند. با تغییر تنظیمات پرس و جو می‌توانی نتایج
-            بیشتری را بدست‌‌بیاری.
           </q-item-label>
           <div class="row justify-between q-mt-sm">
             <q-btn flat round color="grey" size="sm" icon="far fa-comment"
-              ><span class="text-subtitle2 q-pl-sm">۱۷</span></q-btn
+              ><span class="text-subtitle2 q-pl-sm">{{
+                whico.comments
+              }}</span></q-btn
             >
             <q-btn flat round color="grey" size="sm" icon="fas fa-retweet">
-              <span class="text-subtitle2 q-pl-sm">۸</span>
+              <span class="text-subtitle2 q-pl-sm">{{ whico.reWhicos }}</span>
             </q-btn>
             <q-btn flat round color="grey" size="sm" icon="far fa-heart">
-              <span class="text-subtitle2 q-pl-sm">۱۵۰</span>
+              <span class="text-subtitle2 q-pl-sm">{{ whico.likes }}</span>
             </q-btn>
             <q-btn flat round color="grey" size="sm" icon="fas fa-trash" />
             <q-btn flat round color="grey" size="sm" icon="fas fa-" />
@@ -76,12 +77,40 @@
 
 <script>
 import { defineComponent } from "vue";
+import { format } from "date-fns";
 
 export default defineComponent({
   name: "PageHome",
   data() {
     return {
       newWhicoContent: "",
+      whicos: [
+        {
+          content:
+            "«سرکلایو سینکلر» پدر کامپیوترهای خانگی «ZX Spectrum»، مخترع ماشین حساب جیبی، طراح خودروی الکتریکی C5 و تلویزیون جیبی TV80 پس از یک دوره طولانی مدت مبارزه با بیماری، در سن ۸۱ سالگی در لندن درگذشت.",
+          date: 1631875861357,
+          comments: "۱۵",
+          reWhicos: "۷",
+          likes: "۱۸۳",
+        },
+        {
+          content:
+            "ناسا در مجموع ۱۴۶ میلیون دلار به پنج شرکت از جمله اسپیس ایکس، بلو اوریجین و دینتیکس بودجه می‌دهد تا برای برنامه فضایی آرتمیس به توسعه نمونه‌های مفهومی ماه‌نشین بپردازند.",
+          date: 1631876568611,
+          comments: "۵",
+          reWhicos: "۳",
+          likes: "۸۳",
+        },
+        {
+          content:
+            " نگران نباش که توو نتایج جستجو به پایین بری ، بر خلاف بسیاری از موتورهای جستجوی دیگه، بسته به اون‌چیزی که دنبالش هستی، ممکنه بهترین نتایج را در وسط لیست پیدا کنی نتایج جستجو جامع نیستند. با تغییر تنظیمات پرس و جو می‌توانی نتایج بیشتری به‌دست بیاری.",
+          date: 1631876568611,
+          comments: "۲۵",
+          reWhicos: "۱۰",
+          likes: "۲۰۰",
+        },
+      ],
+      format,
     };
   },
 });

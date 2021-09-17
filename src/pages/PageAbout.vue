@@ -1,8 +1,8 @@
 <template>
   <q-page class="q-pa-lg">
-    <h4 class="parand text-weight-bold q-mt-none q-mb-md">درباره <span class="bank">ویکو</span></h4>
+    <h4 class="parand text-weight-bold q-mt-none q-mb-md">درباره <span class="bank">ویکوو</span></h4>
     <p class="parand text-body1">
-      <span class="text-h5">ویکو</span> یک
+      <span class="text-h5">ویکوو</span> یک
       <span class="text-h6">شبکه اجتماعی</span> مخصوص
       <span class="text-h6">برنامه‌نویسان</span> طراحی شده و امکان مشارکت بین
       آنهارا فراهم می‌کند.
