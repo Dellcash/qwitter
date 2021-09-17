@@ -5,17 +5,17 @@
         404
       </div>
 
-      <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+      <div class="text-h2 mosa" style="opacity:.4">
+        اوو!! چیری اینجا نیست...
       </div>
 
       <q-btn
-        class="q-mt-xl"
+        class="q-mt-xl mosa"
         color="white"
         text-color="blue"
         unelevated
         to="/"
-        label="Go Home"
+        label="خانه"
         no-caps
       />
     </div>
@@ -29,3 +29,9 @@ export default defineComponent({
   name: 'Error404'
 })
 </script>
+
+<style>
+.mosa {
+  font-family: "Mosa";
+}
+</style>

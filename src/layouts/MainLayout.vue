@@ -14,10 +14,13 @@
             size="lg"
           />
         </q-toolbar-title> -->
-        
+
         <q-toolbar-title class="bank flip-horizontal col-2 ">
-          <span class="text-h5 text-weight-bold">کیو</span
-          ><span class="shadow-24 bg-black text-white q-pl-sm">تر</span>
+          <span class="text-h5 text-weight-bold">ویـ</span
+          ><span class="shadow-24 bg-black text-white q-pl-sm">کو</span>
+        </q-toolbar-title>
+        <q-toolbar-title class="mosa q-mt-sm q-mr-md absolute-top-right">
+          <span class="text-h6 q-uploader q-tab">{{ $route.name }}</span>
         </q-toolbar-title>
         <!-- <q-btn dense flat round icon="menu" @click="toggleRightDrawer" /> -->
       </q-toolbar>
@@ -37,7 +40,7 @@
       />
 
       <q-list>
-        <q-item clickable v-ripple to="/">
+        <q-item exact clickable v-ripple to="/">
           <q-item-section avatar>
             <q-icon name="home" size="md" />
           </q-item-section>
@@ -46,7 +49,7 @@
           >
         </q-item>
 
-        <q-item clickable v-ripple to="/about">
+        <q-item exact clickable v-ripple to="/about">
           <q-item-section avatar>
             <q-icon name="help" size="md" />
           </q-item-section>
