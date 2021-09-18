@@ -97,7 +97,13 @@
 import { defineComponent } from "vue";
 import { format } from "date-fns";
 import db from "src/boot/firebase.js";
-import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
+import {
+  collection,
+  query,
+  onSnapshot,
+  orderBy,
+  addDoc,
+} from "firebase/firestore";
 
 export default defineComponent({
   name: "PageHome",
@@ -139,7 +145,9 @@ export default defineComponent({
         content: this.newWhicoContent,
         date: Date.now(),
       };
-      this.whicos.unshift(newWhico);
+      // this.whicos.unshift(newWhico);
+      const docRef = addDoc(collection(db, "whico"), newWhico);
+      console.log("Document written with ID: ", docRef.id);
       this.newWhicoContent = "";
     },
     deleteWhico(whico) {
@@ -149,13 +157,13 @@ export default defineComponent({
     },
   },
   mounted() {
-    const q = query(collection(db, "whico"),orderBy('date'));
+    const q = query(collection(db, "whico"), orderBy("date"));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
-        let whicoChange = change.doc.data()
+        let whicoChange = change.doc.data();
         if (change.type === "added") {
           console.log("New whico: ", whicoChange);
-          this.whicos.unshift(whicoChange)
+          this.whicos.unshift(whicoChange);
         }
         if (change.type === "modified") {
           console.log("Modified whico: ", whicoChange);
