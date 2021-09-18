@@ -41,7 +41,7 @@
           enter-active-class="animated fadeIn slow"
           leave-active-class="animated fadeOut slow"
         >
-          <q-item class="q-py-md" v-for="whico in whicos" :key="whico.date">
+          <q-item class="q-py-md" v-for="whico in whicos" :key="whico.id">
             <q-item-section avatar top>
               <q-avatar size="xl">
                 <img
@@ -103,6 +103,8 @@ import {
   onSnapshot,
   orderBy,
   addDoc,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 
 export default defineComponent({
@@ -151,9 +153,8 @@ export default defineComponent({
       this.newWhicoContent = "";
     },
     deleteWhico(whico) {
-      let deteToDelete = whico.date;
-      let index = this.whicos.findIndex((whico) => whico.date === deteToDelete);
-      this.whicos.splice(index, 1);
+      deleteDoc(doc(db, "whico", whico.id));
+      console.log('Document successfully deleted!!');
     },
   },
   mounted() {
@@ -161,6 +162,7 @@ export default defineComponent({
     const unsubscribe = onSnapshot(q, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
         let whicoChange = change.doc.data();
+        whicoChange.id = change.doc.id;
         if (change.type === "added") {
           console.log("New whico: ", whicoChange);
           this.whicos.unshift(whicoChange);
@@ -170,6 +172,10 @@ export default defineComponent({
         }
         if (change.type === "removed") {
           console.log("Removed whico: ", whicoChange);
+          let index = this.whicos.findIndex(
+            (whico) => whico.id === whicoChange.id
+          );
+          this.whicos.splice(index, 1);
         }
       });
     });
