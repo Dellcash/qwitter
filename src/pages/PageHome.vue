@@ -96,6 +96,8 @@
 <script>
 import { defineComponent } from "vue";
 import { format } from "date-fns";
+import db from "src/boot/firebase.js";
+import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 
 export default defineComponent({
   name: "PageHome",
@@ -103,30 +105,30 @@ export default defineComponent({
     return {
       newWhicoContent: "",
       whicos: [
-        {
-          content:
-            "«سرکلایو سینکلر» پدر کامپیوترهای خانگی «ZX Spectrum»، مخترع ماشین حساب جیبی، طراح خودروی الکتریکی C5 و تلویزیون جیبی TV80 پس از یک دوره طولانی مدت مبارزه با بیماری، در سن ۸۱ سالگی در لندن درگذشت.",
-          date: 1631875861357,
-          comments: "۱۵",
-          reWhicos: "۷",
-          likes: "۱۸۳",
-        },
-        {
-          content:
-            "ناسا در مجموع ۱۴۶ میلیون دلار به پنج شرکت از جمله اسپیس ایکس، بلو اوریجین و دینتیکس بودجه می‌دهد تا برای برنامه فضایی آرتمیس به توسعه نمونه‌های مفهومی ماه‌نشین بپردازند.",
-          date: 1631876568611,
-          comments: "۵",
-          reWhicos: "۳",
-          likes: "۸۳",
-        },
-        {
-          content:
-            " نگران نباش که توو نتایج جستجو به پایین بری ، بر خلاف بسیاری از موتورهای جستجوی دیگه، بسته به اون‌چیزی که دنبالش هستی، ممکنه بهترین نتایج را در وسط لیست پیدا کنی نتایج جستجو جامع نیستند. با تغییر تنظیمات پرس و جو می‌توانی نتایج بیشتری به‌دست بیاری.",
-          date: 1631933370765,
-          comments: "۲۵",
-          reWhicos: "۱۰",
-          likes: "۲۰۰",
-        },
+        // {
+        //   content:
+        //     "«سرکلایو سینکلر» پدر کامپیوترهای خانگی «ZX Spectrum»، مخترع ماشین حساب جیبی، طراح خودروی الکتریکی C5 و تلویزیون جیبی TV80 پس از یک دوره طولانی مدت مبارزه با بیماری، در سن ۸۱ سالگی در لندن درگذشت.",
+        //   date: 1631875861357,
+        //   comments: "۱۵",
+        //   reWhicos: "۷",
+        //   likes: "۱۸۳",
+        // },
+        // {
+        //   content:
+        //     "ناسا در مجموع ۱۴۶ میلیون دلار به پنج شرکت از جمله اسپیس ایکس، بلو اوریجین و دینتیکس بودجه می‌دهد تا برای برنامه فضایی آرتمیس به توسعه نمونه‌های مفهومی ماه‌نشین بپردازند.",
+        //   date: 1631876568611,
+        //   comments: "۵",
+        //   reWhicos: "۳",
+        //   likes: "۸۳",
+        // },
+        // {
+        //   content:
+        //     " نگران نباش که توو نتایج جستجو به پایین بری ، بر خلاف بسیاری از موتورهای جستجوی دیگه، بسته به اون‌چیزی که دنبالش هستی، ممکنه بهترین نتایج را در وسط لیست پیدا کنی نتایج جستجو جامع نیستند. با تغییر تنظیمات پرس و جو می‌توانی نتایج بیشتری به‌دست بیاری.",
+        //   date: 1631933370765,
+        //   comments: "۲۵",
+        //   reWhicos: "۱۰",
+        //   likes: "۲۰۰",
+        // },
       ],
       format,
     };
@@ -145,6 +147,24 @@ export default defineComponent({
       let index = this.whicos.findIndex((whico) => whico.date === deteToDelete);
       this.whicos.splice(index, 1);
     },
+  },
+  mounted() {
+    const q = query(collection(db, "whico"),orderBy('date'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        let whicoChange = change.doc.data()
+        if (change.type === "added") {
+          console.log("New whico: ", whicoChange);
+          this.whicos.unshift(whicoChange)
+        }
+        if (change.type === "modified") {
+          console.log("Modified whico: ", whicoChange);
+        }
+        if (change.type === "removed") {
+          console.log("Removed whico: ", whicoChange);
+        }
+      });
+    });
   },
 });
 </script>
