@@ -26,23 +26,23 @@ export default defineComponent({
 }
 @font-face {
   font-family: "Parand";
-  src: url("./fonts/Mj_Parand.ttf");
+  src: url("./fonts/MjParand.ttf");
 }
 @font-face {
   font-family: "Nabi";
-  src: url("./fonts/Mj_NabighaLight.ttf");
+  src: url("./fonts/MjNabighaLight.ttf");
 }
 @font-face {
   font-family: "Mosa";
-  src: url("./fonts/Mj_Mousa.ttf");
+  src: url("./fonts/MjMousa.ttf");
 }
 @font-face {
   font-family: "Farsi";
-  src: url("./fonts/Mj_FarsiNormal.ttf");
+  src: url("./fonts/MjFarsiNormal.ttf");
 }
 @font-face {
   font-family: "Moshfeg";
-  src: url("./fonts/Mj_Moshfegh.ttf");
+  src: url("./fonts/MjMoshfegh.ttf");
 }
 @font-face {
   font-family: "Bank";
