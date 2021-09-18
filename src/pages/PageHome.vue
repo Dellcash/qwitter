@@ -72,8 +72,14 @@
                     whico.reWhicos
                   }}</span>
                 </q-btn>
-                <q-btn flat round color="grey" size="sm" icon="far fa-heart">
-                  <span class="text-subtitle2 q-pl-sm">{{ whico.likes }}</span>
+                <q-btn
+                  @click="toggleLikes(whico)"
+                  flat
+                  round
+                  size="sm"
+                  :color="whico.likes ? 'pink' : 'grey'"
+                  :icon="whico.likes ? 'fas fa-heart' : 'far fa-heart'"
+                >
                 </q-btn>
                 <q-btn
                   flat
@@ -105,6 +111,7 @@ import {
   addDoc,
   doc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 export default defineComponent({
@@ -146,6 +153,7 @@ export default defineComponent({
       let newWhico = {
         content: this.newWhicoContent,
         date: Date.now(),
+        likes: false,
       };
       // this.whicos.unshift(newWhico);
       const docRef = addDoc(collection(db, "whico"), newWhico);
@@ -154,7 +162,12 @@ export default defineComponent({
     },
     deleteWhico(whico) {
       deleteDoc(doc(db, "whico", whico.id));
-      console.log('Document successfully deleted!!');
+      console.log("Document successfully deleted!!");
+    },
+    toggleLikes(whico) {
+      updateDoc(doc(db, "whico", whico.id), {
+        likes: !whico.likes
+      });
     },
   },
   mounted() {
@@ -169,6 +182,10 @@ export default defineComponent({
         }
         if (change.type === "modified") {
           console.log("Modified whico: ", whicoChange);
+          let index = this.whicos.findIndex(
+            (whico) => whico.id === whicoChange.id
+          );
+          Object.assign(this.whicos[index], whicoChange);
         }
         if (change.type === "removed") {
           console.log("Removed whico: ", whicoChange);
