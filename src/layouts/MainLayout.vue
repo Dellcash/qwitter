@@ -20,7 +20,7 @@
           ><span class="shadow-24 bg-black text-white q-pl-sm">کوو</span>
         </q-toolbar-title>
         <q-toolbar-title class="mosa q-mt-sm q-mr-md absolute-top-right">
-          <span class="text-h6 q-uploader q-tab">{{ $route.name }}</span>
+          <span class="text-h6 q-uploader q-tab gt-xs">{{ $route.name }}</span>
         </q-toolbar-title>
         <!-- <q-btn dense flat round icon="menu" @click="toggleRightDrawer" /> -->
       </q-toolbar>
@@ -129,7 +129,11 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </q-page-container>
   </q-layout>
 </template>
