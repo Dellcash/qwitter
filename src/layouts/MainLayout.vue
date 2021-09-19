@@ -33,14 +33,16 @@
       bordered
       :width="283"
     >
+    <router-link to="/">
       <q-icon
-        class="q-pa-md flip-horizontal"
+        class="q-pa-md flip-horizontal text-black q-time__header-ampm"
         name="fas fa-kiwi-bird"
         size="lg"
       />
+      </router-link>
 
       <q-list>
-        <q-item exact clickable v-ripple to="/">
+        <q-item exact clickable v-ripple to="/home">
           <q-item-section avatar>
             <q-icon name="home" size="md" />
           </q-item-section>

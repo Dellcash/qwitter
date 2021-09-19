@@ -1,10 +1,11 @@
 
 const routes = [
+  {path: '',name:'ثبت نام', component: () => import('src/pages/Register.vue')},
   {
-    path: '/',
+    path: '/home',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name: 'صفحه‌اصلی', component: () => import('src/pages/PageHome.vue') },
+      { path: '/home', name: 'صفحه‌اصلی', component: () => import('src/pages/PageHome.vue') },
       { path: '/about', name: 'درباره', component: () => import('src/pages/PageAbout.vue') }
     ]
   },
